@@ -1,0 +1,54 @@
+.env
+
+node_modules/
+
+temp/
+dist/
+build/
+
+*.log
+*.tmp
+*.bak
+
+*.min.js
+*.min.css
+
+.vscode/
+.idea/
+
+.Trashes
+
+# dependencies
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# npm debug log
+npm-debug.log*
+
+# yarn
+.yarn/
+.yarnrc.yml
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

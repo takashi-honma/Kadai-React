@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+:root{
+    --color-back: #eeeeee;
+    --color-front: #ffffff;
+    --color-black: #333333;
+    --color-miss: #b10000;
+    --color-button: #0088ff;
+    --color-load: #000000aa;
+
+    --center-transform: translate(-50%, -50%);
+}
+
+/*
+base
+*/
+body {
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-black);
+    background-color: var(--color-back);
+}
+
+.button,
+.input {
+    cursor: pointer;
+}
+
+/*
+box
+*/
+.box {
+    background-color: var(--color-front);
+    padding: 0px 100px 30px 100px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: var(--center-transform);
+    z-index: 101;
+    box-shadow: 5px 5px 5px var(--color-black);
+}
+
+/*
+section
+*/
+.section {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+/*
+text
+*/
+.miss {
+    color: var(--color-miss);
+    font-size: 18px;
+}
+
+/*
+form
+*/
+.form-headline {
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+
+.input {
+    width: 250px;
+    max-width: 300px;
+    height: 35px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .form-table tr {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .form-table th,
+    .form-table td {
+        display: block;
+        width: 100%;
+    }
+}
+
+/*
+button
+*/
+.button {
+    display: inline-block;
+    color: var(--color-front);
+    font-weight: bold;
+    background-color: var(--color-button);
+    text-align: center;
+    padding: 15px 60px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+}
+
+/*
+loading
+*/
+.loading {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-load);
+    z-index: 1000;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.loading-circle {
+    border: 12px solid var(--color-front);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    border-top: 12px solid var(--color-button);
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 40%;
+    left: 45%;
+    transform: var(--center-transform);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/*
+other
+*/
+.hidden {
+    display: none;
+    opacity: 0;
+}
