@@ -85,7 +85,6 @@ function App() {
                 changeValue={changeValue}
               />
             </tbody>
-
           </table>
 
           <section className="section">
