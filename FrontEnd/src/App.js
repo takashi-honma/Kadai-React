@@ -3,14 +3,15 @@ import './App.css';
 import './sanitize.css';
 
 function App() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [message, setMessage] = useState('IDとパスワードを入力してください');
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   async function LoginRequest(e) {
     e.preventDefault();
+
+    const username = e.target.username.value
+    const password = e.target.password.value
 
     if (username === '' || password === '') {
       setMessage('ユーザー名かパスワードが未入力です！');
@@ -29,7 +30,6 @@ function App() {
       const { success, message } = await res.json();
       setMessage(message);
       setIsError(!success);
-
     } catch (error) {
       setMessage('通信エラーが発生しました。');
       setIsError(true);
@@ -62,8 +62,7 @@ function App() {
                     className="input"
                     type="text"
                     id="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    name="username"
                   />
                 </td>
               </tr>
@@ -78,8 +77,7 @@ function App() {
                     className="input"
                     type="password"
                     id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    name="password"
                   />
                 </td>
               </tr>
