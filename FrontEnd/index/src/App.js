@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import './App.css';
 import './sanitize.css';
 import { TextSection, FormInput, LoadingSection } from './component.jsx';
@@ -14,7 +13,6 @@ function App() {
   const [message, setMessage] = useState('IDとパスワードを入力してください');
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
 
   function changeValue(id, value) {
     setFormData((prev) => ({
@@ -42,6 +40,12 @@ function App() {
         setMessage(message);
         setIsError(!success);
         setIsLoading(false);
+      })
+      .catch((error) => {
+        setMessage('通信エラーが発生しました。');
+        setIsError(true);
+        setIsLoading(false);
+        console.error('Fetch Error Message:バックエンドとの通信失敗:', error);
       });
   }
 
@@ -52,34 +56,35 @@ function App() {
           level="h1"
           id="text-top"
           text="ログイン"
-          isError = {false}
+          isError={false}
         />
 
         <TextSection
           level="h2"
           id="text"
           text={message}
-          isError = {isError}
+          isError={isError}
         />
 
         <form className="form" onSubmit={(e) => e.preventDefault()}>
           <table className="form-table">
+            <tbody>
+              <FormInput
+                label="ユーザーID"
+                type="text"
+                id="username"
+                value={formData.username}
+                changeValue={changeValue}
+              />
 
-            <FormInput
-              label="ユーザーID"
-              type="text"
-              id="username"
-              value={formData.username}
-              changeValue={changeValue}
-            />
-
-            <FormInput
-              label="パスワード"
-              type="password"
-              id="password"
-              value={formData.password}
-              changeValue={changeValue}
-            />
+              <FormInput
+                label="パスワード"
+                type="password"
+                id="password"
+                value={formData.password}
+                changeValue={changeValue}
+              />
+            </tbody>
 
           </table>
 

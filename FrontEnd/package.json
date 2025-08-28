@@ -4,10 +4,9 @@
   "description": "ログインページ制作課題の成果物",
   "author": "本間 尊",
   "license": "MIT",
-  "main": "./index/src/App.js",
   "type": "module",
   "scripts": {
-    "start": "node ./index/src/App.js"
+    "start": "npm --prefix ./index start"
   },
   "dependencies": {
     "dotenv": "^17.2.1",
